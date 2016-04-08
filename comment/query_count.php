@@ -51,8 +51,7 @@
 		while($row=mysql_fetch_assoc($query)){
 //			var_dump($row);
 			$results=array("count"=>$row['count(*)']);
-			$results['status']='200';
-			die(json_encode($results));
+			die(JSON($results));
 		}
 		
 		

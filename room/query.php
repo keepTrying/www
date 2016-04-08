@@ -56,8 +56,7 @@ http://localhost/hotel/room/query.php?room_num=&room_type=&room_area_min=20.00&r
 		}
 		//var_dump($results);
 		if(!empty($results)){
-			$results['status']='200';
-			die(json_encode($results));
+			die(JSON($results));
 		}else{
 			die(JSON('432'));
 		}

@@ -20,8 +20,7 @@
 			
 		 	while($row=mysql_fetch_assoc($user_info)){
 				$result = array('count' =>$row['count(*)']);
-				$results['status']='200';
-				die(json_encode($results));	
+				die(JSON($result));	
 			}
 			
 		}else{

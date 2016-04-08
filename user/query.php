@@ -72,8 +72,7 @@
 				
 			}else{
 				
-				$results['status']='200';
-				die(json_encode($results));
+				die (JSON($results));
 				
 			}
 			

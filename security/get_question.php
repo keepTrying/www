@@ -16,8 +16,7 @@
 			
 		 	while($row=mysql_fetch_assoc($user_info)){
 				$result = array("user_que"=>$row['user_que'],"user_id"=>$row['user_id']);
-				$results['status']='200';
-				die(json_encode($results));	
+				die(JSON($result));	
 			}
 			
 		}else{

@@ -38,8 +38,7 @@
 				//var_dump($user_history);
 				$row['user_history']=$user_history;
 
-				$row['status']='200';
-				die(json_encode($row));
+				die (JSON($row));
 
 			}else{
 				// echo $row['user_password'];
