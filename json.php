@@ -52,10 +52,9 @@ function JSON($error) {
         $json = json_encode($array);
         return urldecode($json);
     }else{
-        $array = array('status' => '200');
-        $res = array_merge($array,$error);
-        arrayRecursive($res, 'urlencode', true);
-        $json = json_encode($res);
+        $array = array('status' => '200','data' => $error);
+        arrayRecursive($array, 'urlencode', true);
+        $json = json_encode($array);
         return urldecode($json);
     }
 }
