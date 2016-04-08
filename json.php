@@ -52,7 +52,8 @@ function JSON($error) {
         $json = json_encode($array);
         return urldecode($json);
     }else{
-        $error['status']='200';
+        $array = array('status' => $error);
+        array_push($error,$array);
         arrayRecursive($error, 'urlencode', true);
         $json = json_encode($error);
         return urldecode($json);
