@@ -46,7 +46,7 @@ http://localhost/hotel/room/query.php?room_num=&room_type=&room_area_min=20.00&r
 		$querysql=str_replace("`room_type` ='$room_type'
 	AND  ","",$querysql);
 	}
-	var_dump($querysql);
+	//var_dump($querysql);
 
 	if($query=mysql_query($querysql)){
 		$results=array();
