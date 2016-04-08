@@ -85,7 +85,8 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 		}
 		//var_dump($results);
 		if(!empty($results)){
-			die(JSON($results));
+			$results['status']='200';
+			die(json_encode($results));
 		}else{
 			die(JSON('433'));
 		}

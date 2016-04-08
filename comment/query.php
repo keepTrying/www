@@ -55,7 +55,8 @@ http://localhost/hotel/comment/query.php?comment_time_begin=&comment_time_end=20
 		}
 		//var_dump($results);
 		if(!empty($results)){
-			die(JSON($results));
+			$results['status']='200';
+			die(json_encode($results));
 		}else{
 		die(JSON('433'));
 		}

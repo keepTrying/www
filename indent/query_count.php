@@ -80,7 +80,8 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 		
 		while($row=mysql_fetch_assoc($query)){
 			$results=array("count"=>$row['count(*)']);
-			die(JSON($results));
+			$results['status']='200';
+			die(json_encode($results));
 		}
 	}else{
 		die(JSON('432'));
