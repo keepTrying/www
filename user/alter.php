@@ -34,7 +34,7 @@
 
 	if(mysql_query($altersql)){
 		// echo "alter succeful";
-		die('200');
+		die(JSON('200'));
 	}else{
 		// echo "alter fail";
 		// echo "<br>";
