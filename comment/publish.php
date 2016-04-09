@@ -14,6 +14,9 @@
 	if(empty($_POST['comment_star'])){
 		die(JSON('414'));
 	}
+	if(empty($_POST['user_name'])){
+		die(JSON('411'));
+	}
 	
 	foreach($_POST as $key => $value){
 		$$key = $value; 
@@ -22,7 +25,7 @@
 	
 	$comment_time = date('y-m-d h:i:s');
 	
-	$insertsql = "INSERT INTO `hotel`.`comments` (`user_id`, `comment_time`, `comment_text`,  `room_num`, `comment_star`) VALUES ('$user_id', '$comment_time', '$comment_text', '$room_num', '$comment_star'); ";
+	$insertsql = "INSERT INTO `hotel`.`comments` (`user_id`, `comment_time`, `comment_text`,  `room_num`, `comment_star`,`user_name`) VALUES ('$user_id', '$comment_time', '$comment_text', '$room_num', '$comment_star', '$user_name'); ";
 	
 	if(mysql_query($insertsql)){
 		// echo "insert succeful";

@@ -2,7 +2,7 @@
 http://localhost/hotel/comment/query.php?comment_time_begin=&comment_time_end=2016-02-26&comment_id=&room_num=&comment_star=&user_id=
 	require_once('../connect.php');
 	
-	if(empty($_POST['comment_time_begin'])&&empty($_POST['comment_time_end'])&&empty($_POST['comment_id'])&&empty($_POST['room_num'])&&empty($_POST['comment_star'])&&empty($_POST['user_id'])){
+	if(empty($_POST['comment_time_begin'])&&empty($_POST['comment_time_end'])&&empty($_POST['comment_id'])&&empty($_POST['room_num'])&&empty($_POST['comment_star'])&&empty($_POST['user_id'])&&empty($_POST['user_name'])){
 		
 		die(JSON('431'));
 	}else{
@@ -28,6 +28,7 @@ http://localhost/hotel/comment/query.php?comment_time_begin=&comment_time_end=20
 	AND  `comment_id` ='$comment_id'
 	AND  `comment_star` ='$comment_star'
 	AND  `user_id` ='$user_id'
+	AND  `user_name` ='$user_name'
 	LIMIT $_POST[page],$_POST[num_page]
 	; ";
 	
@@ -44,7 +45,9 @@ http://localhost/hotel/comment/query.php?comment_time_begin=&comment_time_end=20
 	if(empty($user_id)){
 		$querysql=str_replace("AND  `user_id` ='$user_id'","",$querysql);
 	}
-	
+	if(empty($user_name)){
+		$querysql=str_replace("AND  `user_name` ='$user_name'","",$querysql);
+	}
 	//var_dump($querysql);
 
 	if($query=mysql_query($querysql)){

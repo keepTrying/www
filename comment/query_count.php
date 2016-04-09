@@ -1,7 +1,7 @@
 <?php
 	require_once('../connect.php');
 	
-	if(empty($_POST['comment_time_begin'])&&empty($_POST['comment_time_end'])&&empty($_POST['comment_id'])&&empty($_POST['room_num'])&&empty($_POST['comment_star'])&&empty($_POST['user_id'])){
+	if(empty($_POST['comment_time_begin'])&&empty($_POST['comment_time_end'])&&empty($_POST['comment_id'])&&empty($_POST['room_num'])&&empty($_POST['comment_star'])&&empty($_POST['user_id'])&&empty($_POST['user_name'])){
 		
 		die(JSON('431'));
 	}else{
@@ -27,6 +27,7 @@
 	AND  `comment_id` ='$comment_id'
 	AND  `comment_star` ='$comment_star'
 	AND  `user_id` ='$user_id'
+	AND  `user_name` ='$user_name'
 	; ";
 	
 	//var_dump($querysql);
@@ -41,6 +42,9 @@
 	}
 	if(empty($user_id)){
 		$querysql=str_replace("AND  `user_id` ='$user_id'","",$querysql);
+	}
+	if(empty($user_name)){
+		$querysql=str_replace("AND  `user_name` ='$user_name'","",$querysql);
 	}
 	
 	//var_dump($querysql);

@@ -20,7 +20,9 @@
 	if(empty($_POST['comment_reply'])){
 		die(JSON('416'));
 	}
-	
+	if(empty($_POST['user_name'])){
+		die(JSON('418'));
+	}
 	
 	
 	foreach($_POST as $key => $value){
@@ -30,9 +32,7 @@
 	
 	$comment_time = date('y-m-d h:i:s');
 	
-	$insertsql = "INSERT INTO `hotel`.`comments` (`user_id`, `comment_time`, `comment_text`,  `room_num`, `comment_star`) VALUES ('$user_id', '$comment_time', '$comment_text', '$room_num', '$comment_star'); ";
-	
-	$altersql = "UPDATE `hotel`.`comments` SET `comment_text`='$comment_text', `room_num`='$room_num', `comment_star`='$comment_star', `user_id`='$user_id', `comment_reply`='$comment_reply' WHERE `comments`.`comment_id`='$comment_id'; ";
+	$altersql = "UPDATE `hotel`.`comments` SET `comment_text`='$comment_text', `room_num`='$room_num', `comment_star`='$comment_star', `user_id`='$user_id', `comment_reply`='$comment_reply', `user_name`='$user_name' WHERE `comments`.`comment_id`='$comment_id'; ";
 	
 	if(mysql_query($altersql)){
 		// echo "alter succeful";
