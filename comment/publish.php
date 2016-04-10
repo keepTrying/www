@@ -23,7 +23,7 @@
 		// echo $key ."=>".$value. "<br \>";
 	}
 	
-	$comment_time = date('y-m-d h:i:s');
+	$comment_time = date('y-m-d H:i:s');
 	
 	$insertsql = "INSERT INTO `hotel`.`comments` (`user_id`, `comment_time`, `comment_text`,  `room_num`, `comment_star`,`user_name`) VALUES ('$user_id', '$comment_time', '$comment_text', '$room_num', '$comment_star', '$user_name'); ";
 	
