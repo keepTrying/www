@@ -2,7 +2,7 @@
 http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-26&pay=1&room_num=010001&indent_status=2&user_id=0001&cost_min=10&cost_max=999&indent_type=2&indent_id=2
 	require_once('../connect.php');
 	
-	if(empty($_POST['time_begin'])&&empty($_POST['time_end'])&&empty($_POST['pay'])&&empty($_POST['cost_max'])&&empty($_POST['cost_min'])&&empty($_POST['indent_time_begin'])&&empty($_POST['indent_time_end'])&&empty($_POST['room_num'])&&empty($_POST['indent_id'])&&empty($_POST['indent_status'])&&empty($_POST['user_id'])&&empty($_POST['indent_type'])){
+	if(empty($_POST['time_begin'])&&empty($_POST['time_end'])&&empty($_POST['cost_max'])&&empty($_POST['cost_min'])&&empty($_POST['indent_time_begin'])&&empty($_POST['indent_time_end'])&&empty($_POST['room_num'])&&empty($_POST['indent_id'])&&empty($_POST['indent_status'])&&empty($_POST['user_id'])&&empty($_POST['indent_type'])){
 		
 		die(JSON('431'));
 	}else{
@@ -35,7 +35,6 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 	FROM  `indents` 
 	WHERE  `time_begin` >=  '$time_begin'
 	AND  `time_end` <=  '$time_end'
-	AND  `pay` ='$pay'
 	AND  `room_num` ='$room_num'
 	AND  `indent_id` ='$indent_id'
 	AND  `indent_time` 
@@ -51,10 +50,7 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 	; ";
 	
 	//var_dump($querysql);
-	if(empty($pay)){
-		$querysql=str_replace("  `pay` ='$pay'
-	AND","",$querysql);
-	}
+	
 	if(empty($indent_id)){
 		$querysql=str_replace("`indent_id` ='$indent_id'
 	AND","",$querysql);
@@ -76,11 +72,19 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 	}
 	
 	//var_dump($querysql);
+	$now=strtotime(date("y-m-d h:i:s"));
 
 	if($query=mysql_query($querysql)){
 		$results=array();
 		while($row=mysql_fetch_assoc($query)){
 			//var_dump($row);
+			if ($row['indent_status']==1) {
+				$indent_time=$row['indent_time'];
+				$indent_time=strtotime($indent_time);
+				if (ceil(($now-$indent_time)/60)>40) {
+					$row['indent_status']=5;
+	
+			}
 			array_push($results,$row);
 		}
 		//var_dump($results);

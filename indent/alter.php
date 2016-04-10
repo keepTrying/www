@@ -8,9 +8,6 @@
 	if(empty($_POST['time_end'])){
 		die(JSON('412'));
 	}
-	if(empty($_POST['pay'])){
-		die(JSON('413'));
-	}
 	if(empty($_POST['room_num'])){
 		die(JSON('414'));
 	}
@@ -37,7 +34,7 @@
 	
 	$indent_time = date('y-m-d h:i:s');
 	
-	$altersql = "UPDATE `hotel`.`indents` SET `time_begin`='$time_begin', `time_end`='$time_end', `pay`='$pay', `room_num`='$room_num', `indent_status`='$indent_status', `user_id`='$user_id', `cost`='$cost', `indent_type`='$indent_type' WHERE `indents`.`indent_id`='$indent_id'; ";
+	$altersql = "UPDATE `hotel`.`indents` SET `time_begin`='$time_begin', `time_end`='$time_end', `room_num`='$room_num', `indent_status`='$indent_status', `user_id`='$user_id', `cost`='$cost', `indent_type`='$indent_type' WHERE `indents`.`indent_id`='$indent_id'; ";
 	
 	if(mysql_query($altersql)){
 		// echo "alter succeful";
