@@ -71,7 +71,7 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 	AND","",$querysql);
 	}
 	
-	var_dump($querysql);
+	// var_dump($querysql);
 	$now=strtotime(date("y-m-d h:i:s"));
 
 	if($query=mysql_query($querysql)){
