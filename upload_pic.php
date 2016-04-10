@@ -40,23 +40,18 @@ require_once('connect.php');
              $name=implode(".",$filename);
              $uploadfile=$uploaddir.$name;
          }while(file_exists($uploadfile));
-        //if (file_exists($uploadfile)) {
-        //  die(JSON('402'));
-        //}else{
-        //      $filename[0]=random(10); //设置随机数长度
-        //      $name=implode(".",$filename);
-        //      $uploadfile=$uploaddir.$name;        
-        //}
-
+        
         if(is_uploaded_file($_FILES['file']['tmp_name'])){
-        //if (move_uploaded_file($_FILES['file']['tmp_name'],$uploadfile)){
           
+            if (!empty($_POST['path'])) {
+              $uploadfile=$_POST['path'];
+            }
             if (move_uploaded_file($_FILES['file']['tmp_name'],$uploadfile)){
-           // if(is_uploaded_file($_FILES['file']['tmp_name'])){
                 //输出图片预览
                 // echo "<center>您的文件已经上传完毕 上传图片预览: </center><br><center><img src='$uploadfile'></center>";
                 // echo"<br><center><a href='javascrīpt:history.go(-1)'>继续上传</a></center>";
-              die(JSON('200'));
+              $res=array('path' => $uploadfile);
+              die(JSON($uploadfile));
               }
               else{
                 // echo "上传失败！";
