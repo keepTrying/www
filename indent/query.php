@@ -97,4 +97,5 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 		
 	}else{
 		die(JSON('432'));
+	}
 ?>
