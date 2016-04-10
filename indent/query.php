@@ -78,14 +78,15 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 		$results=array();
 		while($row=mysql_fetch_assoc($query)){
 			//var_dump($row);
-			if ($row['indent_status']==1) {
+			if ($row['indent_status']==1&&$row['indent_type']==1) {
 				$indent_time=$row['indent_time'];
 				$indent_time=strtotime($indent_time);
 				if (ceil(($now-$indent_time)/60)>40) {
 					$row['indent_status']=5;
 	
+				}
+				array_push($results,$row);
 			}
-			array_push($results,$row);
 		}
 		//var_dump($results);
 		if(!empty($results)){
@@ -96,5 +97,4 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 		
 	}else{
 		die(JSON('432'));
-	}
 ?>
