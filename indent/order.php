@@ -29,7 +29,7 @@
 	$indent_time = date('y-m-d H:i:s');
 	
 	
-	$insertsql = "INSERT INTO `hotel`.`indents` (`time_begin`, `time_end`, `room_num`, `indent_time`, `user_id`, `cost`, `indent_type`) VALUES ('$time_begin', '$time_end', '$room_num', '$indent_time',1, '$user_id', '$cost', '$indent_type') ";
+	$insertsql = "INSERT INTO `hotel`.`indents` (`time_begin`, `time_end`, `room_num`, `indent_time`, `user_id`, `cost`, `indent_type`) VALUES ('$time_begin', '$time_end', '$room_num', '$indent_time', '$user_id', '$cost', '$indent_type') ";
 	
 	if(mysql_query($insertsql)){
 		// echo "insert succeful";
