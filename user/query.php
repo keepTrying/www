@@ -11,7 +11,7 @@
 				continue;
 			//$condition=$key;
 			//$parameter = $value;
-		$sql_query=$sql_query."`".$key."` = '".$value."' AND ";
+			$sql_query=$sql_query."`".$key."` = '".$value."' AND ";
 		}
 		$sql_query2=substr_replace($sql_query, "LIMIT $_POST[page],$_POST[num_page]", -4,-1);
 	}
