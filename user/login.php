@@ -29,7 +29,7 @@
 		 if($user_info=mysql_query($sql_query)){
 		 	$row=mysql_fetch_assoc($user_info);
 			if($row['user_password']==$user_password){
-				unset($row['user_password'],$row['user_ans'],$row['user_que']);
+				unset($row['user_ans'],$row['user_que']);
 				$user_id=$row['user_id'];
 				$sql_indents="SELECT time_begin,time_end,room_num FROM indents WHERE user_id = $user_id ";
 				if($user_history=mysql_query($sql_indents)){
