@@ -2,7 +2,14 @@
 	require_once('../connect.php');
 	try{
 
-		 if(isset($_POST['user_password'])){
+		if (isset($_POST['action'])) {
+			if ($_POST['action'])==='logout') {
+				session_destroy();
+				die(JSON('200'));
+			}
+		}
+
+		if(isset($_POST['user_password'])){
 			$user_password = $_POST['user_password'];
 		}else{
 			// echo "no password";
@@ -38,7 +45,14 @@
 				//var_dump($user_history);
 				$row['user_history']=$user_history;
 
-				die (JSON($row));
+				if (isset($_POST['action'])) {
+					if ($_POST['action'])==='login') {
+						session_start();
+						$_SESSION["user"]=$row;
+						die(JSON('200'));
+					}
+				}else
+					die (JSON($row));
 
 			}else{
 				// echo $row['user_password'];
