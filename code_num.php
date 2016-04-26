@@ -1,5 +1,5 @@
 <?php  
-session_start();  
+// session_start();  
 getCode(4,60,20);  
   
 function getCode($num,$w,$h) {  

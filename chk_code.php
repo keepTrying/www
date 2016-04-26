@@ -1,5 +1,5 @@
 <?php  
-session_start();  
+// session_start();  
   
 $action = $_GET['act'];  
 $code = trim($_POST['code']);  
