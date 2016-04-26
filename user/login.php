@@ -3,7 +3,7 @@
 	try{
 
 		if (isset($_POST['action'])) {
-			if ($_POST['action'])==='logout') {
+			if ($_POST['action']==='logout') {
 				session_destroy();
 				die(JSON('200'));
 			}
@@ -46,7 +46,7 @@
 				$row['user_history']=$user_history;
 
 				if (isset($_POST['action'])) {
-					if ($_POST['action'])==='login') {
+					if ($_POST['action']==='login') {
 						session_start();
 						$_SESSION["user"]=$row;
 						die(JSON('200'));
