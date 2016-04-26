@@ -49,10 +49,11 @@
 					if ($_POST['action']==='login') {
 						// session_start();
 						$_SESSION['user']=$row;
-						die(JSON('200'));
+//						die(JSON('200'));
 					}
-				}else
-					die (JSON($row));
+				}
+                
+				die (JSON($row));
 
 			}else{
 				// echo $row['user_password'];
