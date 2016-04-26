@@ -48,7 +48,7 @@
 				if (isset($_POST['action'])) {
 					if ($_POST['action']==='login') {
 						// session_start();
-						$_SESSION["user"]=$row;
+						$_SESSION['user']=$row;
 						die(JSON('200'));
 					}
 				}else
