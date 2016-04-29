@@ -36,7 +36,14 @@
 	$altersql = "UPDATE  `hotel`.`users` SET `user_nick` = '$user_nick', `user_gender` = '$user_gender', `user_years` = '$user_years', `user_email` = '$user_email', `user_phone` = '$user_phone',`user_id_num` = '$user_id_num',  `user_name` = '$user_name' ,`user_img` = '$user_img' ,`user_point`='$user_point' WHERE `users`.`user_id_num` = '$user_id_num'; ";
 
 	if(mysql_query($altersql)){
-		// echo "alter succeful";
+		if (isset($_POST['web'])) {
+			$sql_query="SELECT * FROM `users` WHERE `user_phone` =  '$user_phone'";
+			if($res=mysql_query($sql_query)){
+				while ($row=mysql_fetch_assoc($res)) {
+					$_SESSION['user']=$row;
+				}
+			}	
+		}
 		die(JSON('200'));
 	}else{
 		// echo "alter fail";
