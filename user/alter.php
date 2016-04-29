@@ -2,28 +2,28 @@
 // http://localhost/hotel/user/alter.php?user_nick=测试21&user_gender=1&user_years=11&user_email=test@example.com&user_phone=123456&user_id_num=13121415&user_name=王尼玛
 	require_once('../connect.php');
 	//var_dump($_POST);
-	if(empty($_POST['user_nick'])){
+	if(!isset($_POST['user_nick'])){
 		die(JSON('411'));
 	}
-	if(empty($_POST['user_gender'])){
+	if(!isset($_POST['user_gender'])){
 		die(JSON('412'));
 	}
-	if(empty($_POST['user_years'])){
+	if(!isset($_POST['user_years'])){
 		die(JSON('413'));
 	}
-	if(empty($_POST['user_email'])){
+	if(!isset($_POST['user_email'])){
 		die(JSON('414'));
 	}
-	if(empty($_POST['user_phone'])){
+	if(!isset($_POST['user_phone'])){
 		die(JSON('415'));
 	}
-	if(empty($_POST['user_id_num'])){
+	if(!isset($_POST['user_id_num'])){
 		die(JSON('416'));
 	}
-	if(empty($_POST['user_name'])){
+	if(!isset($_POST['user_name'])){
 		die(JSON('417'));
 	}
-	if(empty($_POST['user_point'])){
+	if(!isset($_POST['user_point'])){
 		die(JSON('418'));
 	}
 	
