@@ -2,7 +2,7 @@
 http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-26&pay=1&room_num=010001&indent_status=2&user_id=0001&cost_min=10&cost_max=999&indent_type=2&indent_id=2
 	require_once('../connect.php');
 	
-	if(empty($_POST['time_begin'])&&empty($_POST['time_end'])&&empty($_POST['cost_max'])&&empty($_POST['cost_min'])&&empty($_POST['indent_time_begin'])&&empty($_POST['indent_time_end'])&&empty($_POST['room_num'])&&empty($_POST['indent_id'])&&empty($_POST['indent_status'])&&empty($_POST['user_id'])&&empty($_POST['indent_type'])){
+	if(empty($_POST['time_begin'])&&empty($_POST['time_end'])&&empty($_POST['cost_max'])&&empty($_POST['cost_min'])&&empty($_POST['indent_time_begin'])&&empty($_POST['indent_time_end'])&&!isset($_POST['room_num'])&&!isset($_POST['indent_id'])&&!isset($_POST['indent_status'])&&!isset($_POST['user_id'])&&!isset($_POST['indent_type'])){
 		
 		die(JSON('431'));
 	}else{

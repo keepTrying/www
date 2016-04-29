@@ -8,16 +8,16 @@
 	if(empty($_POST['time_end'])){
 		die(JSON('412'));
 	}
-	if(empty($_POST['room_num'])){
+	if(!isset($_POST['room_num'])){
 		die(JSON('413'));
 	}
-	if(empty($_POST['user_id'])){
+	if(!isset($_POST['user_id'])){
 		die(JSON('414'));
 	}
-	if(empty($_POST['cost'])){
+	if(!isset($_POST['cost'])){
 		die(JSON('415'));
 	}
-	if(empty($_POST['indent_type'])){
+	if(!isset($_POST['indent_type'])){
 		die(JSON('416'));
 	}
 	

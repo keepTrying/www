@@ -2,7 +2,7 @@
 http://localhost/hotel/room/add.php?room_num=011001&room_type=1&room_area=120.00&room_cost=999&room_img=http://img
 	require_once('../connect.php');
 	
-	if(empty($_POST['room_num'])||empty($_POST['room_type'])||empty($_POST['room_area'])||empty($_POST['room_cost'])||empty($_POST['room_img'])){
+	if(!isset($_POST['room_num'])||!isset($_POST['room_type'])||!isset($_POST['room_area'])||!isset($_POST['room_cost'])||empty($_POST['room_img'])){
 		
 		die(JSON('431'));
 	}else{

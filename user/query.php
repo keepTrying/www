@@ -1,7 +1,7 @@
 <?php
 	require_once('../connect.php');
 	
-	if((empty($_POST['user_phone']))&&(empty($_POST['user_id_num']))&&(empty($_POST['user_name']))){
+	if((!isset($_POST['user_phone']))&&(!isset($_POST['user_id_num']))&&(!isset($_POST['user_name']))){
 		die(JSON('401'));
 
 	}else{

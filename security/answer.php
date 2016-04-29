@@ -2,7 +2,7 @@
 // http://localhost/hotel/security/answer.php?user_id=8&user_ans=你猜！
 	require_once('../connect.php');
 	
-	if((empty($_POST['user_ans']))||(empty($_POST['user_id']))){
+	if((empty($_POST['user_ans']))||(!isset($_POST['user_id']))){
 		die(JSON('401'));
 	}else{
 		foreach($_POST as $key => $value){

@@ -2,34 +2,34 @@
 // http://localhost/hotel/user/register.php?user_nick=测试&user_type=1&user_gender=1&user_years=15&user_email=test@example.com&user_password=fdfddfeefddfe&user_phone=123456&user_id_num=323234323&user_name=王尼玛&user_que=你是猪么？&user_ans=你猜！
 	require_once('../connect.php');
 	//var_dump($_POST);
-	if(empty($_POST['user_nick'])){
+	if(!isset($_POST['user_nick'])){
 		die(JSON('411'));
 	}
-	if(empty($_POST['user_gender'])){
+	if(!isset($_POST['user_gender'])){
 		die(JSON('412'));
 	}
-	if(empty($_POST['user_years'])){
+	if(!isset($_POST['user_years'])){
 		die(JSON('413'));
 	}
-	if(empty($_POST['user_email'])){
+	if(!isset($_POST['user_email'])){
 		die(JSON('414'));
 	}
-	if(empty($_POST['user_phone'])){
+	if(!isset($_POST['user_phone'])){
 		die(JSON('415'));
 	}
-	if(empty($_POST['user_id_num'])){
+	if(!isset($_POST['user_id_num'])){
 		die(JSON('416'));
 	}
-	if(empty($_POST['user_name'])){
+	if(!isset($_POST['user_name'])){
 		die(JSON('417'));
 	}
-	if(empty($_POST['user_que'])){
+	if(!isset($_POST['user_que'])){
 		die(JSON('418'));
 	}
-	if(empty($_POST['user_ans'])){
+	if(!isset($_POST['user_ans'])){
 		die(JSON('419'));
 	}
-	if(empty($_POST['user_password'])){
+	if(!isset($_POST['user_password'])){
 		die(JSON('420'));
 	}
 	foreach($_POST as $key => $value){

@@ -2,7 +2,7 @@
 http://localhost/hotel/room/query.php?room_num=&room_type=&room_area_min=20.00&room_area_max=999.00&room_cost_min=9&room_cost_max=999
 	require_once('../connect.php');
 	
-	if(empty($_POST['room_num'])&&empty($_POST['room_type'])&&empty($_POST['room_area'])&&empty($_POST['room_cost_max'])&&empty($_POST['room_cost_min'])){
+	if(!isset($_POST['room_num'])&&!isset($_POST['room_type'])&&!isset($_POST['room_area'])&&!isset($_POST['room_cost_max'])&&!isset($_POST['room_cost_min'])){
 		
 		die(JSON('431'));
 	}else{
