@@ -17,12 +17,13 @@
 			
 		 	while($row=mysql_fetch_assoc($user_info)){
 				$result = array("user_que"=>$row['user_que'],"user_id"=>$row['user_id']);
-				if($result){
+				
+			}
+			if(isset($result)){
 					die(JSON($result));	
 				}else{
 					die(JSON('402'));
 				}
-			}
 			
 		}else{
 			
