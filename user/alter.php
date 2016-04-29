@@ -26,14 +26,16 @@
 	if(!isset($_POST['user_point'])){
 		die(JSON('418'));
 	}
-	
+	if(!isset($_POST['user_id'])){
+		die(JSON('420'));
+	}
 	foreach($_POST as $key => $value){
 		$$key = $value; 
 		// echo $key ."=>".$value. "<br \>";
 	}
 	
 	
-	$altersql = "UPDATE  `hotel`.`users` SET `user_nick` = '$user_nick', `user_gender` = '$user_gender', `user_years` = '$user_years', `user_email` = '$user_email', `user_phone` = '$user_phone',`user_id_num` = '$user_id_num',  `user_name` = '$user_name' ,`user_img` = '$user_img' ,`user_point`='$user_point' WHERE `users`.`user_id_num` = '$user_id_num'; ";
+	$altersql = "UPDATE  `hotel`.`users` SET `user_nick` = '$user_nick', `user_gender` = '$user_gender', `user_years` = '$user_years', `user_email` = '$user_email', `user_phone` = '$user_phone',`user_id_num` = '$user_id_num',  `user_name` = '$user_name' ,`user_img` = '$user_img' ,`user_point`='$user_point' WHERE `users`.`user_id` = '$user_id'; ";
 
 	if(mysql_query($altersql)){
 		if (isset($_POST['web'])) {
