@@ -12,11 +12,16 @@
 	
 	$sql_query="SELECT * FROM users WHERE user_id_num = '$user_id_num' ; ";
 	
+
 		 if($user_info=mysql_query($sql_query)){
 			
 		 	while($row=mysql_fetch_assoc($user_info)){
 				$result = array("user_que"=>$row['user_que'],"user_id"=>$row['user_id']);
-				die(JSON($result));	
+				if($result){
+					die(JSON($result));	
+				}else{
+					die(JSON('402'));
+				}
 			}
 			
 		}else{
