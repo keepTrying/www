@@ -2,7 +2,7 @@
 http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-26&pay=1&room_num=010001&indent_status=2&user_id=0001&cost_min=10&cost_max=999&indent_type=2&indent_id=2
 	require_once('../connect.php');
 	
-	if(empty($_POST['time_begin'])&&empty($_POST['time_end'])&&empty($_POST['cost_max'])&&empty($_POST['cost_min'])&&empty($_POST['indent_time_begin'])&&empty($_POST['indent_time_end'])&&!isset($_POST['room_num'])&&!isset($_POST['indent_id'])&&!isset($_POST['indent_status'])&&!isset($_POST['user_id'])&&!isset($_POST['indent_type'])){
+	if(!isset($_POST['time_begin'])&&!isset($_POST['time_end'])&&!isset($_POST['cost_max'])&&!isset($_POST['cost_min'])&&!isset($_POST['indent_time_begin'])&&!isset($_POST['indent_time_end'])&&!isset($_POST['room_num'])&&!isset($_POST['indent_id'])&&!isset($_POST['indent_status'])&&!isset($_POST['user_id'])&&!isset($_POST['indent_type'])||!isset($_POST['page'])||!isset($_POST['num_page'])){
 		
 		die(JSON('431'));
 	}else{
@@ -45,8 +45,23 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 	AND  `cost` 
 	BETWEEN $cost_min
 	AND $cost_max 
-	AND  `indent_type` ='$indent_type'
-	LIMIT $_POST[page],$_POST[num_page]
+	AND  `indent_type` ='$indent_type'";
+	if (isset($_POST['sum'])) {
+		$querysql.=" AND `sum`='".$_POST['sum']."'";
+	}
+	if (isset($_POST['name'])) {
+		for ($i=1; $i < 6; $i++) { 
+			$querysql.=" OR `name".$i."` = "."'".$_POST['name']."'";
+		}
+		
+	}
+	if (isset($_POST['id_num'])) {
+		for ($i=1; $i < 6; $i++) { 
+			$querysql.=" OR `id".$i."` = "."'".$_POST['id_num']."'";
+		}
+	}
+
+	$querysql.=" LIMIT $_POST[page],$_POST[num_page]
 	; ";
 	
 	//var_dump($querysql);
@@ -71,7 +86,6 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 	AND","",$querysql);
 	}
 	
-	// var_dump($querysql);
 	$now=strtotime(date("y-m-d h:i:s"));
 
 	if($query=mysql_query($querysql)){

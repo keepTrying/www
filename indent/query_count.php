@@ -45,8 +45,22 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 	AND  `cost` 
 	BETWEEN $cost_min
 	AND $cost_max 
-	AND  `indent_type` ='$indent_type'
-	; ";
+	AND  `indent_type` ='$indent_type'";
+	if (isset($_POST['sum'])) {
+		$querysql.=" AND `sum`='".$_POST['sum']."'";
+	}
+	if (isset($_POST['name'])) {
+		for ($i=1; $i < 6; $i++) { 
+			$querysql.=" OR `name".$i."` = "."'".$_POST['name']."'";
+		}
+		
+	}
+	if (isset($_POST['id_num'])) {
+		for ($i=1; $i < 6; $i++) { 
+			$querysql.=" OR `id".$i."` = "."'".$_POST['id_num']."'";
+		}
+	}
+
 	
 	//var_dump($querysql);
 	if(empty($indent_id)){
@@ -70,10 +84,18 @@ http://localhost/hotel/indent/query.php?time_begin=2016-02-25&time_end=2016-02-2
 	}
 	
 	//var_dump($querysql);
-
+	$now=strtotime(date("y-m-d h:i:s"));
 	if($query=mysql_query($querysql)){
 		
 		while($row=mysql_fetch_assoc($query)){
+			if ($row['indent_status']==1&&$row['indent_type']==1) {
+				$indent_time=$row['indent_time'];
+				$indent_time=strtotime($indent_time);
+				if (ceil(($now-$indent_time)/60)>40) {
+					$row['indent_status']=5;
+	
+				}
+			}
 			$results=array("count"=>$row['count(*)']);
 			die(JSON($results));
 		}

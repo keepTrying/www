@@ -28,9 +28,11 @@
 	
 	$indent_time = date('y-m-d H:i:s');
 	
-	
-	$insertsql = "INSERT INTO `hotel`.`indents` (`time_begin`, `time_end`, `room_num`, `indent_time`, `user_id`, `cost`, `indent_type`) VALUES ('$time_begin', '$time_end', '$room_num', '$indent_time', '$user_id', '$cost', '$indent_type') ";
-	
+	if(!isset($_POST['indent_sum'])){
+		$insertsql = "INSERT INTO `hotel`.`indents` (`time_begin`, `time_end`, `room_num`, `indent_time`, `user_id`, `cost`, `indent_type`) VALUES ('$time_begin', '$time_end', '$room_num', '$indent_time', '$user_id', '$cost', '$indent_type') ";
+	}else{
+		$insertsql = "INSERT INTO `hotel`.`indents` (`time_begin`, `time_end`, `room_num`, `indent_time`, `user_id`, `cost`, `indent_type`, `indent_sum`) VALUES ('$time_begin', '$time_end', '$room_num', '$indent_time', '$user_id', '$cost', '$indent_type', '$indent_sum') ";
+	}
 	if(mysql_query($insertsql)){
 		// echo "insert succeful";
 		die(JSON('200'));

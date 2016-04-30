@@ -15,8 +15,9 @@
 		die(JSON('414'));
 	}
 	if(empty($_POST['user_name'])){
-		die(JSON('411'));
+		die(JSON('415'));
 	}
+	
 	
 	foreach($_POST as $key => $value){
 		$$key = $value; 
@@ -24,8 +25,13 @@
 	}
 	
 	$comment_time = date('y-m-d H:i:s');
-	
-	$insertsql = "INSERT INTO `hotel`.`comments` (`user_id`, `comment_time`, `comment_text`,  `room_num`, `comment_star`,`user_name`) VALUES ('$user_id', '$comment_time', '$comment_text', '$room_num', '$comment_star', '$user_name'); ";
+	if(!isset($_POST['user_img'])){
+			$insertsql = "INSERT INTO `hotel`.`comments` (`user_id`, `comment_time`, `comment_text`,  `room_num`, `comment_star`,`user_name`) VALUES ('$user_id', '$comment_time', '$comment_text', '$room_num', '$comment_star', '$user_name'); ";
+
+	}else{
+			$insertsql = "INSERT INTO `hotel`.`comments` (`user_id`, `comment_time`, `comment_text`,  `room_num`, `comment_star`,`user_name`, `user_img`) VALUES ('$user_id', '$comment_time', '$comment_text', '$room_num', '$comment_star', '$user_name', '$user_img'); ";
+
+	}
 	
 	if(mysql_query($insertsql)){
 		// echo "insert succeful";
@@ -34,6 +40,6 @@
 		// echo "insert fail";
 		// echo "<br>";
 		// echo mysql_error();
-		die(JSON('417'));
+		die(JSON('416'));
 	}
 ?>

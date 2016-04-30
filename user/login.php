@@ -13,7 +13,7 @@
 			$user_password = $_POST['user_password'];
 		}else{
 			// echo "no password";
-			die(JSON('401'));
+			die(JSON('402'));
 		}
 		if(isset($_POST['user_phone'])){
 			$user_phone = $_POST['user_phone'];
@@ -57,7 +57,7 @@
 
 			}else{
 				// echo $row['user_password'];
-				die(JSON('402'));
+				die(JSON('404'));
 			}
 		}else{
 			die(JSON('403'));

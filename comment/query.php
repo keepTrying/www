@@ -60,7 +60,7 @@ http://localhost/hotel/comment/query.php?comment_time_begin=&comment_time_end=20
 		if(!empty($results)){
 			die(JSON($results));
 		}else{
-		die(JSON('433'));
+			die(JSON('433'));
 		}
 		
 	}else{
