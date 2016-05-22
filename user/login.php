@@ -58,7 +58,7 @@
 					$push = $client->push();
 					$push->setPlatform('all');
 					$push->addAllAudience();
-					$array=new arrar();
+					$array=new array();
 					array_push($array,$_POST['tag']);
 					$push->addTags($array);
 					$push->setNotificationAlert('亲爱的顾客，为庆祝本酒店成立5周年，即日起至6月15日预定房间，享受8.8折优惠！');
