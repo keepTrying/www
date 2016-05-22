@@ -66,9 +66,11 @@
 						switch ($row['indent_status']) {
 						case '2':
 							# payed
+						$push->setNotificationAlert('亲爱的顾客,您预定的'.$row['room_num'].'号房间，将于'.$row['time_begin'].'可以入住，不要错过哦！')->send();
 							break;
 						case '6':
 							# lived
+						$push->setNotificationAlert('亲爱的顾客,您入住的'.$row['room_num'].'号房间，将于'.$row['time_begin'].'到期，如需要继续享受我们的服务，请及时续费！')->send();
 							break;
 
 						default:
