@@ -1,5 +1,6 @@
 <?php
 	require_once('../connect.php');
+	require_once('../JPush/JPush.php');
 	try{
 
 		if (isset($_POST['action'])) {
@@ -49,8 +50,33 @@
 					if ($_POST['action']==='login') {
 						// session_start();
 						$_SESSION['user']=$row;
-//						die(JSON('200'));
 					}
+
+				}else{
+					//TODO  android PUSH
+					$client = new JPush('376ef5633c2c8b564f5cb188', '1f896b4b972267e162d22095');
+					$push = $client->push();
+					$push->setPlatform('all');
+					$push->addAllAudience();
+					$push->setNotificationAlert('亲爱的顾客，为庆祝本酒店成立5周年，即日起至6月15日预定房间，享受8.8折优惠！');
+					$push->send();
+					$sql="SELECT * FROM indents WHERE user_id=$user_id";
+					if ($indents=mysql_query($sql)) {
+						$row=mysql_fetch_assoc($indents);
+						switch ($row['indent_status']) {
+						case '2':
+							# payed
+							break;
+						case '6':
+							# lived
+							break;
+
+						default:
+							break;
+						}
+					}
+					
+
 				}
                 
 				die (JSON($row));
