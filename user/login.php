@@ -70,8 +70,12 @@
 								break;
 							case '6':
 								# lived
-							$push->setNotificationAlert('亲爱的顾客,您入住的'.$row3['room_num'].'号房间，将于'.$row3['time_begin'].'到期，如需要继续享受我们的服务，请及时续费！')->send();
+								$time=time();
+								$now=date("y-m-d",$time);
+							if (diffBetweenTwoDays($row3['time_end'],$now)<=5) {
+								$push->setNotificationAlert('亲爱的顾客,您入住的'.$row3['room_num'].'号房间，将于'.$row3['time_begin'].'到期，如需要继续享受我们的服务，请及时续费！')->send();
 								break;
+							}
 
 							default:
 								break;
@@ -94,5 +98,25 @@
 	}catch (Exception $e) {
 		print $e->getMessage();
 
+	}
+
+	/**
+	 * 求两个日期之间相差的天数
+	 * (针对1970年1月1日之后，求之前可以采用泰勒公式)
+	 * @param string $day1
+	 * @param string $day2
+	 * @return number
+	 */
+	function diffBetweenTwoDays ($day1, $day2)
+	{
+	  $second1 = strtotime($day1);
+	  $second2 = strtotime($day2);
+	    
+	  if ($second1 < $second2) {
+	    $tmp = $second2;
+	    $second2 = $second1;
+	    $second1 = $tmp;
+	  }
+	  return ($second1 - $second2) / 86400;
 	} 
 ?>
