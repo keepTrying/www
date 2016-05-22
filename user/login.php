@@ -57,7 +57,7 @@
 					$client = new JPush('376ef5633c2c8b564f5cb188', '1f896b4b972267e162d22095');
 					$push = $client->push();
 					$push->setPlatform('all');
-					$push->addAllAudience();
+					// $push->addAllAudience();
 					$array=array($_POST['tag']);
 					$push->addTag($array);
 					$push->setNotificationAlert('亲爱的顾客，为庆祝本酒店成立5周年，即日起至6月15日预定房间，享受8.8折优惠！');
