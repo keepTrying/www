@@ -63,7 +63,7 @@
 					$sql="SELECT * FROM indents WHERE user_id=$user_id";
 					if ($indents=mysql_query($sql)) {
 						while($row3=mysql_fetch_assoc($indents)){
-							switch ($row['indent_status']) {
+							switch ($row3['indent_status']) {
 							case '2':
 								# payed
 							$push->setNotificationAlert('亲爱的顾客,您预定的'.$row3['room_num'].'号房间，将于'.$row3['time_begin'].'可以入住，不要错过哦！')->send();
