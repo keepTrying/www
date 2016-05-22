@@ -58,6 +58,7 @@
 					$push = $client->push();
 					$push->setPlatform('all');
 					$push->addAllAudience();
+					$push->addTags(array('$_POST['tag']'));
 					$push->setNotificationAlert('亲爱的顾客，为庆祝本酒店成立5周年，即日起至6月15日预定房间，享受8.8折优惠！');
 					$push->send();
 					$sql="SELECT * FROM indents WHERE user_id=$user_id";
