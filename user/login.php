@@ -38,7 +38,7 @@
 					while ($row2=mysql_fetch_assoc($user_history)) {
 						//var_dump($row2);
 						array_push($temp, $row2);
-				}
+					}
 					$user_history=$temp;
 				}else{
 					$user_history="";
@@ -62,19 +62,20 @@
 					$push->send();
 					$sql="SELECT * FROM indents WHERE user_id=$user_id";
 					if ($indents=mysql_query($sql)) {
-						$row=mysql_fetch_assoc($indents);
-						switch ($row['indent_status']) {
-						case '2':
-							# payed
-						$push->setNotificationAlert('亲爱的顾客,您预定的'.$row['room_num'].'号房间，将于'.$row['time_begin'].'可以入住，不要错过哦！')->send();
-							break;
-						case '6':
-							# lived
-						$push->setNotificationAlert('亲爱的顾客,您入住的'.$row['room_num'].'号房间，将于'.$row['time_begin'].'到期，如需要继续享受我们的服务，请及时续费！')->send();
-							break;
+						while($row3=mysql_fetch_assoc($indents)){
+							switch ($row['indent_status']) {
+							case '2':
+								# payed
+							$push->setNotificationAlert('亲爱的顾客,您预定的'.$row3['room_num'].'号房间，将于'.$row3['time_begin'].'可以入住，不要错过哦！')->send();
+								break;
+							case '6':
+								# lived
+							$push->setNotificationAlert('亲爱的顾客,您入住的'.$row3['room_num'].'号房间，将于'.$row3['time_begin'].'到期，如需要继续享受我们的服务，请及时续费！')->send();
+								break;
 
-						default:
-							break;
+							default:
+								break;
+							}
 						}
 					}
 					
