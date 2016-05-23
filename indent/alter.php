@@ -31,7 +31,7 @@
 			
 		$sql_query=$sql_query."`".$key."` = '".$value."' AND ";
 	}
-	$sql_query2=substr_replace($sql_query, "WHERE `indents`.`indent_id`='$indent_id';", -4,-1);
+	$sql_query2=substr_replace($sql_query, "WHERE `indents`.`indent_id`='$_POST['indent_id']';", -4,-1);
 	
 	
 	//$altersql = "UPDATE `hotel`.`indents` SET `time_begin`='$time_begin', `time_end`='$time_end', `room_num`='$room_num', `indent_status`='$indent_status', `user_id`='$user_id', `cost`='$cost', `indent_type`='$indent_type' WHERE `indents`.`indent_id`='$indent_id'; ";
