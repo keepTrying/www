@@ -29,10 +29,10 @@
 	$sql_query = "UPDATE `hotel`.`indents` SET ";
 	foreach($_POST as $key => $value){
 			
-		$sql_query=$sql_query."`".$key."` = '".$value."' AND ";
+		$sql_query=$sql_query."`".$key."` = '".$value."', ";
 	}
 	$indent_id=$_POST['indent_id'];
-	$sql_query2=substr_replace($sql_query, "WHERE `indents`.`indent_id`='$indent_id';", -4,-1);
+	$sql_query2=substr_replace($sql_query, "WHERE `indents`.`indent_id`='$indent_id';", -2,-1);
 	
 	echo $sql_query2;
 	//$altersql = "UPDATE `hotel`.`indents` SET `time_begin`='$time_begin', `time_end`='$time_end', `room_num`='$room_num', `indent_status`='$indent_status', `user_id`='$user_id', `cost`='$cost', `indent_type`='$indent_type' WHERE `indents`.`indent_id`='$indent_id'; ";
